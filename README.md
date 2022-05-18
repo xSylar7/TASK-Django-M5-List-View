@@ -12,12 +12,10 @@
      - `time`
      - `price`
    - Create a `URL` with name `flights-list` for the above view and test it in `postman`.
-   - Replace the api in the **frontends** `flights_list` view with this api.
 7. Create a `view` that shows a list of **upcoming** `Bookings`:
    - Complete it so that it displays the following fields for each booking.
      - `flight`
      - `date`
      - `id`
    - Create a `URL` with name `bookings-list` for the above view and test it in `postman`.
-   - Replace the api in the **frontends** `profile` view with this api.
 8. Push your code

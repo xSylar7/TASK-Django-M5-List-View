@@ -9,7 +9,7 @@ class Flight(models.Model):
     miles = models.PositiveIntegerField()
 
     def __str__(self):
-        return "to %s at %s" % (self.destination, str(self.time))
+        return f"to {self.destination} at {self.time}"
 
 
 class Booking(models.Model):
@@ -21,4 +21,4 @@ class Booking(models.Model):
     passengers = models.PositiveIntegerField()
 
     def __str__(self):
-        return "%s: %s" % (self.user.username, str(self.flight))
+        return f"{self.user.username}: {self.flight}"

@@ -6,26 +6,26 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('flights', '0001_initial'),
+        ("flights", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='flight',
-            name='to',
+            model_name="flight",
+            name="to",
         ),
         migrations.AddField(
-            model_name='flight',
-            name='destination',
-            field=models.CharField(default='Wakanda', max_length=100),
+            model_name="flight",
+            name="destination",
+            field=models.CharField(default="Wakanda", max_length=100),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='booking',
-            name='date',
+            model_name="booking",
+            name="date",
             field=models.DateField(),
         ),
         migrations.DeleteModel(
-            name='Country',
+            name="Country",
         ),
     ]

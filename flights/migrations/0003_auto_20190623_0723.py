@@ -6,17 +6,17 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('flights', '0002_auto_20190608_1946'),
+        ("flights", "0002_auto_20190608_1946"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='booking',
-            old_name='number_of_travellers',
-            new_name='passengers',
+            model_name="booking",
+            old_name="number_of_travellers",
+            new_name="passengers",
         ),
         migrations.RemoveField(
-            model_name='booking',
-            name='miles',
+            model_name="booking",
+            name="miles",
         ),
     ]

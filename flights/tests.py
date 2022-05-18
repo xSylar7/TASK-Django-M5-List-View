@@ -73,17 +73,30 @@ class BookingListTest(APITestCase):
         flight2 = Flight.objects.create(**self.flight2)
         user = User.objects.create(username="laila", password="1234567890-=")
 
+        today = date.today()
         Booking.objects.create(
-            flight=flight1, date="2018-01-01", user=user, passengers=2
+            flight=flight1,
+            date=today.replace(year=today.year - 2, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight2, date="2019-01-01", user=user, passengers=2
+            flight=flight2,
+            date=today.replace(year=today.year - 1, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight1, date="2021-01-01", user=user, passengers=2
+            flight=flight1,
+            date=today.replace(year=today.year + 1, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight2, date="2021-01-01", user=user, passengers=2
+            flight=flight2,
+            date=today.replace(year=today.year + 1, day=1),
+            user=user,
+            passengers=2,
         )
 
     def test_url_works(self):
@@ -92,16 +105,14 @@ class BookingListTest(APITestCase):
 
     def test_list(self):
         response = self.client.get(reverse("bookings-list"))
-        bookings = Booking.objects.filter(date__gt=date.today())
+        bookings = list(Booking.objects.filter(date__gt=date.today()))
 
-        self.assertEqual(len(response.data), bookings.count())
-        booking = bookings[0]
-        self.assertEqual(
-            dict(response.data[0]),
-            {"id": booking.id, "flight": booking.flight.id, "date": str(booking.date)},
-        )
-        booking = bookings[1]
-        self.assertEqual(
-            dict(response.data[1]),
-            {"id": booking.id, "flight": booking.flight.id, "date": str(booking.date)},
-        )
+        self.assertEqual(len(response.data), len(bookings))
+
+        for actual, booking in zip(response.data, bookings):
+            expected = {
+                "id": booking.id,
+                "flight": booking.flight.id,
+                "date": str(booking.date),
+            }
+            self.assertEqual(actual, expected)

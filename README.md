@@ -1,6 +1,6 @@
 # Steps
 
-1. Fork and clone [this repository](https://github.com/JoinCODED/JoinCODED-TASK-Django-M5-List-View).
+1. Fork and clone [this repository](https://github.com/JoinCODED/TASK-Django-M5-List-View).
 2. Create a `virtual environment`.
 3. Install the packages using `pip install -r dev-requirements.txt`.
 4. Install `Django Rest Framework`.

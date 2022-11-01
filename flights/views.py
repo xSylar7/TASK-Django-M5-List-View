@@ -1,6 +1,5 @@
 from .models import Booking, Flight
 from rest_framework.generics import ListAPIView
-from flights.models import Flight
 from .serializers import FlightsListSerializer, BookingListSerializer
 from datetime import datetime
 

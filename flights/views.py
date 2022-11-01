@@ -10,3 +10,8 @@ class FlightListView(ListAPIView):
 
     def get_queryset(self):
         return Flight.objects.all()
+
+
+class BookingsListView (ListAPIView):
+    queryset = Flight.objects.all()
+    serializer_class = ListSerializer
